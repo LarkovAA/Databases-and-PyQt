@@ -92,3 +92,4 @@ if __name__ == "__main__":
     # sess.add(list_contact_1)
     # sess.add(list_contact_2)
     # sess.commit()
+    pass
