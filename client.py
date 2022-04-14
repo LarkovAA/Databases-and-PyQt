@@ -6,6 +6,8 @@ import logging
 import threading
 from metaclass import ClientMeta
 import descriptor
+import os
+from client_database import ClientDatabase
 
 class ClientSocke(metaclass=ClientMeta):
     server_connect = descriptor.DesClientConnect()
@@ -41,10 +43,11 @@ class ClientSocke(metaclass=ClientMeta):
             "time": time.ctime(time.time()),
             "encoding": self.encoding,
             "message": text,
-            'from': name_client,
+            'from': self.name_client,
             'to': to
         }
         self.client.send(json.dumps(msg_dict).encode(self.encoding))
+        database_client.add_history_messege(msg_dict['from'], msg_dict['to'], msg_dict['message'])
 
     def quit(self):
         global exit
@@ -63,15 +66,19 @@ class ClientSocke(metaclass=ClientMeta):
         exit = True
 
     def list_contacts(self):
-        msg_dict = {
-            "action": "get_contacts",
-            "time": time.ctime(time.time()),
-            "user_login": self.name_client,
-        }
-        self.client.send(json.dumps(msg_dict).encode(self.encoding))
-        data = self.client.recv(1024)
-        data = json.loads(data.decode(self.encoding))
-        print(data['alert'])
+        database_client.record_databaise_list_contact(client.name_client)
+        rezult = database_client.print_list_contact(self.name_client)
+        print(rezult)
+
+        # msg_dict = {
+        #     "action": "get_contacts",
+        #     "time": time.ctime(time.time()),
+        #     "user_login": self.name_client,
+        # }
+        # self.client.send(json.dumps(msg_dict).encode(self.encoding))
+        # data = self.client.recv(1024)
+        # data = json.loads(data.decode(self.encoding))
+        # print(data['alert'])
 
     def add_and_delet_list_contact(self):
         action = input('Какое действие вы хотите произвести add/del: ')
@@ -93,11 +100,16 @@ class ClientSocke(metaclass=ClientMeta):
         print(data['response'])
 
     def receive_data(self):
+
+        time.sleep(0.1)
         data = self.client.recv(1024)
         data = json.loads(data.decode(self.encoding))
         print(data['alert'], data['time'])
+        database_client.add_history_messege(data['from'], self.name_client, data['alert'])
 
     def the_main_process(self):
+
+        time.sleep(0.1)
         command = input('Введите команду ')
         if command == 'message':
             self.message()
@@ -112,33 +124,37 @@ class ClientSocke(metaclass=ClientMeta):
 name_client = 'client1'
 server_connect = ['', '127.0.0.1', 7777]
 exit = False
-list_flow_client = {}
+list_flow_client = []
 
 if __name__ == "__main__":
     # logger = logging.getLogger('log_client')
     client = ClientSocke(name_client, server_connect, MESSENGE_ENCODE)
     client.run_client()
+    name_catalog = os.getcwd()
+    catalog_bg = f'{name_catalog}/{name_client}'
+    if not os.path.isdir(catalog_bg):
+        os.mkdir(catalog_bg)
+
+    database_client = ClientDatabase(catalog_bg, client.name_client)
+    database_client.record_databaise_list_contact(client.name_client)
     client.presence_messege()
+
     print(f'Клиент: {name_client}\n Поддерживаемые команды:\n message - отправить сообшение. Кому и текст; \n list contacts - запросить список контактов; \n add/del - удалить или добавить пользователя в список контактов; \n exit - выйти из приложения. ')
 
+    flow_1_client = threading.Thread(target=client.receive_data, daemon=True)
+    list_flow_client.append(flow_1_client)
+    flow_2_client = threading.Thread(target=client.the_main_process, daemon=True)
+    list_flow_client.append(flow_2_client)
     while True:
-
-        if not 'flow_1_client' in list_flow_client.keys():
-            list_flow_client['flow_1_client'] = threading.Thread(target=client.receive_data, daemon=True)
-
-        if not 'flow_2_client' in list_flow_client.keys():
-            list_flow_client['flow_2_client'] = threading.Thread(target=client.the_main_process, daemon=True)
-
-        for key in list_flow_client.keys():
-            if not list_flow_client[key].is_alive():
+        for el in list_flow_client:
+            if not el.is_alive():
                 try:
-                    list_flow_client[key].start()
+                    el.start()
                 except:
-                    if key == 'flow_1_client':
-                        list_flow_client['flow_1_client'] = threading.Thread(target=client.receive_data, daemon=True)
-                    if key == 'flow_2_client':
-                        list_flow_client['flow_2_client'] = threading.Thread(target=client.receive_data, daemon=True)
+                    ind = list_flow_client.index(el)
+                    list_flow_client.pop(ind)
+                    list_flow_client.append(el)
 
-        time.sleep(0.1)
         if exit:
             break
+        time.sleep(0.1)

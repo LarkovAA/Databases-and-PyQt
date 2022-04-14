@@ -1,10 +1,12 @@
+import os
 from datetime import datetime
 import sqlite3 as sql3
 import sqlalchemy as sal
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engin = sal.create_engine('sqlite:///database_project.db', echo=False)
+dir = os.getcwd()
+engin = sal.create_engine(f'sqlite:///{dir}/database_project.db', echo=False,pool_recycle=7200,connect_args={'check_same_thread': False})
 
 Base = declarative_base()
 
@@ -73,15 +75,13 @@ if __name__ == "__main__":
     # print('rows count: ', result)
 
     # Пример добавления новых элементов в таблицу HistoryClient она уже встроена в работу сервера
-    # result = sess.query(Client).filter_by(login='client2').first()
-    # result = str(result).split(', ')
-    # result[0] = int(result[0])
-    # customer_verification = sess.query(HistoryClient).filter_by(id_client=result[0]).first()
+    # result = sess.query(Client).filter_by(login='client1').first()
+    # customer_verification = sess.query(HistoryClient).filter_by(id_client=result.id).first()
     # if customer_verification:
     #     customer_verification.entry_time = datetime.now()
     #     sess.commit()
     # else:
-    #     new_time = HistoryClient(result[0], datetime.now(), '192.170.3.11')
+    #     new_time = HistoryClient(result.id, datetime.now(), '192.170.3.11')
     #     sess.add(new_time)
     #     sess.commit()
 
@@ -104,6 +104,7 @@ if __name__ == "__main__":
     #     name_contact = str(name_contact).split(', ')[1]
     #     text += f' {name_contact}'
     # print(text)
+
     # Удаление из контактов
     # id_del_user = sess.query(Client).filter_by(login='client2').first()
     # if id_del_user:

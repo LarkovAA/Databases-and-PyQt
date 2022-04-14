@@ -57,7 +57,7 @@ def checking_string(server_connect: list):
     return True
 
 # @log_data
-def compose_answer(action, code, response, text):
+def compose_answer(action, code, response, text, from_client=None):
     if action in ['authenticate', 'presence', 'msg', 'quit', 'get_contacts', 'add_contact'] and code == 'alert':
         answer_server = {
             'response': response,
@@ -65,6 +65,8 @@ def compose_answer(action, code, response, text):
             "time": time.ctime(time.time())}
         if action == 'presence':
             answer_server["action"] = "probe"
+        if action == 'msg':
+            answer_server["from"] = from_client
     if action in ['authenticate', 'presence', 'msg', 'add_contact'] and code == 'error':
         answer_server = {
             'response': response,
