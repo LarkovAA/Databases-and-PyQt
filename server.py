@@ -62,15 +62,12 @@ class ServerSocket(metaclass=ServerMeta):
 
                                             # Определеем время когда клиент вошел на сервер
                                             result = sess.query(Client).filter_by(login=data['user']['account_name']).first()
-                                            result = str(result).split(', ')
-                                            result[0] = int(result[0])
-                                            customer_verification = sess.query(HistoryClient).filter_by(
-                                                id_client=result[0]).first()
+                                            customer_verification = sess.query(HistoryClient).filter_by(id_client=result.id).first()
                                             if customer_verification:
                                                 customer_verification.entry_time = datetime.now()
                                                 sess.commit()
                                             else:
-                                                new_time = HistoryClient(result[0], datetime.now(), '192.170.3.11')
+                                                new_time = HistoryClient(result.id, datetime.now(), '192.170.3.11')
                                                 sess.add(new_time)
                                                 sess.commit()
 
@@ -82,8 +79,7 @@ class ServerSocket(metaclass=ServerMeta):
                                 to = data['to']
                                 try:
                                     client = self.dict_connected_clients[to]
-                                    client.send(
-                                        json.dumps(compose_answer('msg', 'alert', 202, text)).encode(self.encoding))
+                                    client.send(json.dumps(compose_answer('msg', 'alert', 202, text, data['from'])).encode(self.encoding))
 
                                 except:
                                     pass
