@@ -1,0 +1,85 @@
+дз5.destop\_client package
+==========================
+
+Submodules
+----------
+
+дз5.destop\_client.add\_contact module
+--------------------------------------
+
+.. automodule:: дз5.destop_client.add_contact
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.client module
+--------------------------------
+
+.. automodule:: дз5.destop_client.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.client2 module
+---------------------------------
+
+.. automodule:: дз5.destop_client.client2
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.client\_database module
+------------------------------------------
+
+.. automodule:: дз5.destop_client.client_database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.del\_contact module
+--------------------------------------
+
+.. automodule:: дз5.destop_client.del_contact
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.main\_window module
+--------------------------------------
+
+.. automodule:: дз5.destop_client.main_window
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.main\_window\_conv module
+--------------------------------------------
+
+.. automodule:: дз5.destop_client.main_window_conv
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.start\_dialog module
+---------------------------------------
+
+.. automodule:: дз5.destop_client.start_dialog
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_client.transport module
+-----------------------------------
+
+.. automodule:: дз5.destop_client.transport
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5.destop_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
