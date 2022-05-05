@@ -1,0 +1,29 @@
+дз5.test package
+================
+
+Submodules
+----------
+
+дз5.test.test\_additional\_functions module
+-------------------------------------------
+
+.. automodule:: дз5.test.test_additional_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.test.test\_client module
+----------------------------
+
+.. automodule:: дз5.test.test_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5.test
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,53 @@
+дз5.destop\_server package
+==========================
+
+Submodules
+----------
+
+дз5.destop\_server.admins module
+--------------------------------
+
+.. automodule:: дз5.destop_server.admins
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_server.database module
+----------------------------------
+
+.. automodule:: дз5.destop_server.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_server.list\_clients module
+---------------------------------------
+
+.. automodule:: дз5.destop_server.list_clients
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_server.server module
+--------------------------------
+
+.. automodule:: дз5.destop_server.server
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.destop\_server.statistics\_clients module
+---------------------------------------------
+
+.. automodule:: дз5.destop_server.statistics_clients
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5.destop_server
+   :members:
+   :undoc-members:
+   :show-inheritance:

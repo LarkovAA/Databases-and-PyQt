@@ -1,0 +1,29 @@
+дз5.log package
+===============
+
+Submodules
+----------
+
+дз5.log.client\_log\_config module
+----------------------------------
+
+.. automodule:: дз5.log.client_log_config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.log.server\_log\_config module
+----------------------------------
+
+.. automodule:: дз5.log.server_log_config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5.log
+   :members:
+   :undoc-members:
+   :show-inheritance:

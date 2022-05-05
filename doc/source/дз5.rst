@@ -1,0 +1,73 @@
+дз5 package
+===========
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   дз5.common
+   дз5.destop_client
+   дз5.destop_server
+   дз5.log
+   дз5.test
+
+Submodules
+----------
+
+дз5.conf module
+---------------
+
+.. automodule:: дз5.conf
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.descriptor module
+---------------------
+
+.. automodule:: дз5.descriptor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.launcher module
+-------------------
+
+.. automodule:: дз5.launcher
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.log\_data module
+--------------------
+
+.. automodule:: дз5.log_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.main module
+---------------
+
+.. automodule:: дз5.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.metaclass module
+--------------------
+
+.. automodule:: дз5.metaclass
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5
+   :members:
+   :undoc-members:
+   :show-inheritance:

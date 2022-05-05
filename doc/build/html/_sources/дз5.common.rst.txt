@@ -1,0 +1,53 @@
+дз5.common package
+==================
+
+Submodules
+----------
+
+дз5.common.additional\_functions module
+---------------------------------------
+
+.. automodule:: дз5.common.additional_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.common.configurable\_variables module
+-----------------------------------------
+
+.. automodule:: дз5.common.configurable_variables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.common.errors module
+------------------------
+
+.. automodule:: дз5.common.errors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.common.utils module
+-----------------------
+
+.. automodule:: дз5.common.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+дз5.common.variables module
+---------------------------
+
+.. automodule:: дз5.common.variables
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: дз5.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
